@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 import numpy as np
-import datetime
+from datetime import datetime
 st.set_page_config(layout="wide") # call page_config directly after the imports.
 
 st.title('Visualize Booking Data')
@@ -66,8 +66,8 @@ st.write(df[df['Property'] == option])
 # Selecting a date range filtering 
 st.subheader('Filtering by Date')
 
-min_date = datetime.datetime(2022,1,1)
-max_date = datetime.datetime(2022,9,1)
+min_date = datetime(2022,1,1)
+max_date = datetime(2022,9,1)
 
 st.write('Select first and last date (first date should be earlier than the last date)')
 first_date = st.sidebar.date_input("Pick first date",min_value=min_date, max_value=max_date) # 
