@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 import numpy as np
-from datetime import datetime
+import datetime
 st.set_page_config(layout="wide") # call page_config directly after the imports.
 
 st.title('Visualize Booking Data')
@@ -21,12 +21,15 @@ def get_Data(nrows):
 
 # Importing data
 data_load_state = st.text('Loading data...')
-rows = st.text_input('How many rows you want to show? (Automatically sorted by date)', '10')
+# Importing data
+
+# How many rows of data to show
+rows = st.sidebar.text_input('How many rows you want to show? (Automatically sorted by date)', '10')
 st.write("Number of data you've chosen: ", rows)
 df = get_Data(int(rows))
 data_load_state.text('Loading data...done!')
-# Importing data
-
+# How many rows of data to show
+############################################################
 # Displaying raw data
 st.subheader('Raw data')
 st.write(df)
@@ -63,8 +66,8 @@ st.write(df[df['Property'] == option])
 # Selecting a date range filtering 
 st.subheader('Filtering by Date')
 
-min_date = datetime(2022,1,1)
-max_date = datetime(2022,9,1)
+min_date = datetime.datetime(2022,1,1)
+max_date = datetime.datetime(2022,9,1)
 
 st.write('Select first and last date (first date should be earlier than the last date)')
 first_date = st.sidebar.date_input("Pick first date",min_value=min_date, max_value=max_date) # 
@@ -77,11 +80,14 @@ st.write(df[(df['Created at (lead time to start date)']>first_date) & (df['Creat
 # Selecting a date range filtering
 ############################################################
 # Selecting a date range using slider
+st.subheader('Filtering by Date using slider')
 st.write('Select first and last date using slider')
 sliderDate = st.sidebar.slider("Pick first date", value=(min_date, max_date), format="YY/MM/DD") #
 
 first_date_slider = sliderDate[0]
+first_date_slider = first_date_slider.date()
 second_date_slider = sliderDate[1]
+second_date_slider = second_date_slider.date()
 
 st.write("You selected as first date by using slider:", first_date_slider)
 st.write("You selected as second date by using slider:", second_date_slider)
