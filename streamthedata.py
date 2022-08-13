@@ -67,4 +67,4 @@ max_date = datetime.date(2022,8,1)
 a_date = st.date_input("Pick a date") # 
 st.write("You selected:", a_date)
 
-df.loc[datetime.date(year=202,month=1,day=1):datetime.date(year=2014,month=2,day=1)]
+st.write(df[df['Created at (lead time to start date)'] == a_date])
