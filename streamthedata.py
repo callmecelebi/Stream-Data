@@ -2,8 +2,10 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import datetime
+st.set_page_config(layout="wide") # call page_config directly after the imports.
 
 st.title('Visualize Booking Data')
+
 
 @st.cache
 def get_Data(nrows):
