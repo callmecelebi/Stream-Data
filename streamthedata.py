@@ -22,7 +22,7 @@ data_load_state = st.text('Loading data...')
 rows = st.text_input('How many rows you want to show? (Automatically sorted by date)', '10')
 st.write("Number of data you've chosen: ", rows)
 df = get_Data(int(rows))
-data_load_state.text('Loading first 25 data...done!')
+data_load_state.text('Loading data...done!')
 # Importing data
 
 # Displaying raw data
