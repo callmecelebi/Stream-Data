@@ -31,12 +31,12 @@ st.write(df)
 # Displaying raw data
 
 # Filter by platform options starts
-st.subheader('Filter by Platform')
+st.subheader('Filtering by Platform')
 platformOptions =  df['Platform'].unique()
 
 setPlatformOptions = set(platformOptions)
 
-option = st.selectbox(
+option = st.sidebar.selectbox(
 'Choose a platform please:',
 setPlatformOptions)
 st.write('You selected:', option)
@@ -45,12 +45,12 @@ st.write(df[df['Platform'] == option])
 # Filter by platform options ends 
 
 # Filter by property options starts
-st.subheader('Filter by Property')
+st.subheader('Filtering by Property')
 platformOptions =  df['Property'].unique()
 
 setPlatformOptions = set(platformOptions)
 
-option = st.selectbox(
+option = st.sidebar.selectbox(
 'Choose a property please:',
 setPlatformOptions)
 st.write('You selected:', option)
@@ -63,9 +63,13 @@ st.write(df[df['Property'] == option])
 st.subheader('Filtering by Date')
 
 min_date = datetime.datetime(2022,1,1)
-max_date = datetime.date(2022,8,1)
+max_date = datetime.date(2022,9,1)
 
-a_date = st.date_input("Pick a date") # 
-st.write("You selected:", a_date)
+st.write('Select first and last date (first date should be earlier than the last date)')
+first_date = st.sidebar.date_input("Pick first date",min_value=min_date, max_value=max_date) # 
+st.write("You selected as first date:", first_date)
 
-st.write(df[df['Created at (lead time to start date)'] == a_date])
+second_date = st.sidebar.date_input("Pick second date",min_value=min_date, max_value=max_date) # 
+st.write("You selected as second date:", second_date)
+
+st.write(df[(df['Created at (lead time to start date)']>first_date) & (df['Created at (lead time to start date)']< second_date)]  )
