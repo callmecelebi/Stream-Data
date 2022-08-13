@@ -10,6 +10,7 @@ def get_Data(nrows):
     try:
         df = pd.read_excel("data/Input Reservationsdaten.xlsx", nrows=nrows)
         df['Created at (lead time to start date)'] = pd.to_datetime(df['Created at (lead time to start date)'])
+        df['Created at (lead time to start date)'] = df['Created at (lead time to start date)'].dt.date
         df = df.sort_values(by='Created at (lead time to start date)')
         return df
     except Exception as e:
