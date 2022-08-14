@@ -2,10 +2,14 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 from datetime import datetime
-st.set_page_config(layout="wide") # call page_config directly after the imports.
+st.set_page_config(
+    page_title="Reservation Data", 
+    page_icon="✍🏼",
+    layout="wide") # call page_config directly after the imports.
+
+# mprof run streamlit run app.py
 
 st.title('Visualize Booking Data')
-
 
 @st.cache
 def get_Data(nrows):
