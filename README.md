@@ -19,6 +19,7 @@ https://callmecelebi-stream-data-streamthedata-y1iwpc.streamlitapp.com/
 For you:
 1. Using the requirements create a virtual env. (Pipenv, Conda Env, Virtualenv, It does not matter, whatever suits you. I'm using virtualenv)
   > virtualenv streamdataenv
+  
   > pip install requirements.txt (While in root dir)
 2. Clone the repository.
 3. Cd to main, root. (Stream-data)
